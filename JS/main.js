@@ -96,39 +96,86 @@
 
 // De aca para abajo es la que se agrega para el desafio
 
-const articulos=[];
+// const articulos=[];
 
-let contadorArticulo = 0;
+// let contadorArticulo = 0;
 
-function  Articulo (descripcion, precio, stock){
+// function  Articulo (descripcion, precio, stock){
     
     
-    this.Descripcion = descripcion;
-    this.precio= parseInt(precio);
-    this.stock= stock;
+//     this.Descripcion = descripcion;
+//     this.precio= parseInt(precio);
+//     this.stock= stock;
 
    
-}
+// }
 
-const sku1 = new Articulo("Bujia K4M Megane",910,64);
+// const sku1 = new Articulo("Bujia K4M Megane",910,64);
 
-function ArticuloNuevo(sku){
-    return articulos.push(sku);
-}
+// function ArticuloNuevo(sku){
+//     return articulos.push(sku);
+// }
 
-ArticuloNuevo(sku1);
+// ArticuloNuevo(sku1);
 
-const sku2 = new Articulo("Manija interior Logan", 3800, 8);
+// const sku2 = new Articulo("Manija interior Logan", 3800, 8);
 
-ArticuloNuevo(sku2);
+// ArticuloNuevo(sku2);
 
 
-const sku3 = new Articulo("Kit cremallera embrague R21", 1010, 3);
+// const sku3 = new Articulo("Kit cremallera embrague R21", 1010, 3);
 
-ArticuloNuevo(sku3);
+// ArticuloNuevo(sku3);
 
-const sku4 = new Articulo("Pata caja R19", 4840, 15);
+// const sku4 = new Articulo("Pata caja R19", 4840, 15);
 
-ArticuloNuevo(sku4);
+// ArticuloNuevo(sku4);
+
+// console.log(articulos);
+
+const articulos  = [
+    {sku: 1, descripcion: "Bujia K4M Megane", precio:910 , rubro: "encendido"},
+    {sku: 2, descripcion: "Manija interior Logan", precio: 3800, rubro: "accesorios"},
+    {sku: 3, descripcion: "Kit cremallera embrague R21", precio: 1010, rubro:"accesorios"},
+    {sku: 4, descripcion: "Pata caja R19", precio: 4840, rubro: "motor"}
+]
 
 console.log(articulos);
+
+let validar = parseInt(prompt("Elija que producto quiere agregar al carrito seleccionando el numero correspondiente (sellecionar 0 para salir)\n 1- Bujia \n 2- Manija interior Logan\n 3- Kit cremallera embrague R21 \n 4- Pata caja"));
+
+const carrito = [];
+
+function sumarAlCarrito(x){
+    return carrito.push(x);
+}
+
+
+while (validar !== 0){
+    
+    
+
+    let agregarCarrito = articulos.find(el =>{
+         return el.sku === validar});
+ 
+    console.log(agregarCarrito);
+
+    let cantidad = prompt("Cuantas unidades quiere comprar del repuesto")
+
+    let actualizaPrecio = agregarCarrito.map(el => {return {
+        precio: el.precio * cantidad
+        }
+    })
+
+    sumarAlCarrito(actualizaPrecio);
+
+    console.log(carrito);
+
+    validar = parseInt(prompt("Elija que producto quiere agregar al carrito seleccionando el numero correspondiente (sellecionar 0 para salir)\n 1- Bujia \n 2- Manija interior Logan\n 3- Kit cremallera embrague R21 \n 4- Pata caja"));   
+
+}
+
+
+
+
+
