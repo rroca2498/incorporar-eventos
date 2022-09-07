@@ -151,6 +151,8 @@ function sumarAlCarrito(x){
 }
 
 
+
+
 while (validar !== 0){
     
     
@@ -160,16 +162,21 @@ while (validar !== 0){
  
     console.log(agregarCarrito);
 
-    let cantidad = prompt("Cuantas unidades quiere comprar del repuesto")
+    const cantidad = prompt("Cuantas unidades quiere comprar del repuesto")
 
-    let actualizaPrecio = agregarCarrito.map(el => {return {
-        precio: el.precio * cantidad
-        }
-    })
+    const precioTotal = agregarCarrito.precio * cantidad;
 
-    sumarAlCarrito(actualizaPrecio);
+    // console.log(precioTotal);
 
-    console.log(carrito);
+    agregarCarrito.precio = precioTotal;
+
+    // console.log(agregarCarrito.precio);  fui dejando estos log para poder ir viendo si funcionaba todo lo que hacia
+
+    // console.log(agregarCarrito);
+
+    sumarAlCarrito(agregarCarrito);
+
+    console.log(carrito); // en el carrito se va formando el array con los productos y en el precio figura el total segun la cantidad seleccionada por el usuario
 
     validar = parseInt(prompt("Elija que producto quiere agregar al carrito seleccionando el numero correspondiente (sellecionar 0 para salir)\n 1- Bujia \n 2- Manija interior Logan\n 3- Kit cremallera embrague R21 \n 4- Pata caja"));   
 
