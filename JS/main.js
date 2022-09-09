@@ -182,13 +182,16 @@ while (validar !== 0){
 
     const cargaDeMonto = document.getElementById('productosEnElCarrito');
 
-    let sumaDeMonto = '$' + precioTotal;
+    let sumaDeMonto = "Usted tiene " + agregarCarrito.descripcion + "x " + cantidad + "= " + agregarCarrito.precio*cantidad ;
 
-    // queria hacerlo de este modo pero me tiraba error, en que me estoy equivocando
+    // queria hacerlo de este modo pero me tiraba error, en que me estoy equivocando?
 
-    // cargaDeMonto.innerText = '$ ${precioTotal};
+    // let sumaDeMonto = "Usted tiene $ ${agregarCarrotp.descripcion} $ x $ ${cantidad} $ = $ ${agregarCarrito.precio * cantidad}
+    // ;
 
-    cargaDeMonto.innerText = sumaDeMonto;
+    cargaDeMonto.append(sumaDeMonto);
+
+    
 
     validar = parseInt(prompt("Elija que producto quiere agregar al carrito seleccionando el numero correspondiente (sellecionar 0 para salir)\n 1- Bujia \n 2- Manija interior Logan\n 3- Kit cremallera embrague R21 \n 4- Pata caja"));   
 
