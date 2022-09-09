@@ -178,6 +178,18 @@ while (validar !== 0){
 
     console.log(carrito); // en el carrito se va formando el array con los productos y en el precio figura el total segun la cantidad seleccionada por el usuario
 
+
+
+    const cargaDeMonto = document.getElementById('productosEnElCarrito');
+
+    let sumaDeMonto = '$' + precioTotal;
+
+    // queria hacerlo de este modo pero me tiraba error, en que me estoy equivocando
+
+    // cargaDeMonto.innerText = '$ ${precioTotal};
+
+    cargaDeMonto.innerText = sumaDeMonto;
+
     validar = parseInt(prompt("Elija que producto quiere agregar al carrito seleccionando el numero correspondiente (sellecionar 0 para salir)\n 1- Bujia \n 2- Manija interior Logan\n 3- Kit cremallera embrague R21 \n 4- Pata caja"));   
 
 }
