@@ -133,120 +133,168 @@
 
 // console.log(articulos);
 
+// console.log(articulos);
+
+// // let validar = parseInt(prompt("Elija que producto quiere agregar al carrito seleccionando el numero correspondiente (sellecionar 0 para salir)\n 1- Bujia \n 2- Manija interior Logan\n 3- Kit cremallera embrague R21 \n 4- Pata caja"));
+
+// const carrito = [];
+
+// // function sumarAlCarrito(x){
+// //     return carrito.push(x);
+// // }
+
+// // while (validar !== 0){
+    
+    
+
+// //     let agregarCarrito = articulos.find(el =>{
+// //          return el.sku === validar});
+ 
+// //     console.log(agregarCarrito);
+
+// //     const cantidad = prompt("Cuantas unidades quiere comprar del repuesto")
+
+// //     const precioTotal = agregarCarrito.precio * cantidad;
+
+// //     // console.log(precioTotal);
+
+// //     agregarCarrito.precio = precioTotal;
+
+// //     // console.log(agregarCarrito.precio);  fui dejando estos log para poder ir viendo si funcionaba todo lo que hacia
+
+// //     // console.log(agregarCarrito);
+
+// //     sumarAlCarrito(agregarCarrito);
+
+// //     console.log(carrito); // en el carrito se va formando el array con los productos y en el precio figura el total segun la cantidad seleccionada por el usuario
+
+//     const cargaDeMonto = document.getElementById('productosEnElCarrito');
+
+// //     let sumaDeMonto = "Usted tiene " + agregarCarrito.descripcion + "x " + cantidad + "= " + agregarCarrito.precio*cantidad ;
+
+// //     // queria hacerlo de este modo pero me tiraba error, en que me estoy equivocando?
+
+// //     // let sumaDeMonto = "Usted tiene $ ${agregarCarrotp.descripcion} $ x $ ${cantidad} $ = $ ${agregarCarrito.precio * cantidad}
+// //     // ;
+
+// //     cargaDeMonto.append(sumaDeMonto);
+
+    
+
+// //     validar = parseInt(prompt("Elija que producto quiere agregar al carrito seleccionando el numero correspondiente (sellecionar 0 para salir)\n 1- Bujia \n 2- Manija interior Logan\n 3- Kit cremallera embrague R21 \n 4- Pata caja"));   
+
+// // }
+
+// const contador1= document.querySelector("#cantidad1");
+
+// const suma1 = document.querySelector("#agregar1");
+
+
+
+// suma1.addEventListener("click", ()=>
+// {
+//     cargaDeMonto.append(`Usted tiene ${contador1.value} ${articulos[0].descripcion} = ${articulos[0].precio * contador1.value} `);
+
+   
+// });
+
+// const contador2= document.querySelector("#cantidad2");
+
+// const suma2 = document.querySelector("#agregar2");
+
+
+
+// suma2.addEventListener("click", ()=>
+// {
+//     cargaDeMonto.append(`Usted tiene ${contador2.value} ${articulos[1].descripcion} = ${articulos[1].precio * contador2.value} `);
+
+   
+// });
+
+// const contador3= document.querySelector("#cantidad3");
+
+// const suma3 = document.querySelector("#agregar3");
+
+
+
+// suma3.addEventListener("click", ()=>
+// {
+//     cargaDeMonto.append(`Usted tiene ${contador3.value} ${articulos[2].descripcion} = ${articulos[2].precio * contador3.value} `);
+
+   
+// });
+
+// const contador4= document.querySelector("#cantidad4");
+
+// const suma4 = document.querySelector("#agregar4");
+
+
+
+// suma4.addEventListener("click", ()=>
+// {
+//     cargaDeMonto.append(`Usted tiene ${contador4.value} ${articulos[3].descripcion} = ${articulos[3].precio * contador4.value} `);
+
+   
+// });
+
+// // Probe haciendo entre luego de la suma en cada append para ver si hacia el salto de linea cuando creaba el codigo html y no me funcionaba, tambien utilice el \n y tampoco hacia el salto de linea. Que es lo que estoy haciendo mal?
+
 const articulos  = [
-    {sku: 1, descripcion: "Bujia K4M Megane", precio:910 , rubro: "encendido"},
-    {sku: 2, descripcion: "Manija interior Logan", precio: 3800, rubro: "accesorios"},
-    {sku: 3, descripcion: "Kit cremallera embrague R21", precio: 1010, rubro:"accesorios"},
-    {sku: 4, descripcion: "Pata caja R19", precio: 4840, rubro: "motor"}
+    {sku: 1, descripcion: "Bujia K4M Megane", precio:910 , rubro: "encendido" , img: "../Imagenes/repuestoMuestra.jpg"},
+    {sku: 2, descripcion: "Manija interior Logan", precio: 3800, rubro: "accesorios" , img: "../Imagenes/repuestoMuestra.jpg"},
+    {sku: 3, descripcion: "Kit cremallera embrague R21", precio: 1010, rubro:"accesorios" , img: "../Imagenes/repuestoMuestra.jpg"},
+    {sku: 4, descripcion: "Pata caja R19", precio: 4840, rubro: "motor" , img: "../Imagenes/repuestoMuestra.jpg"},
+    {sku: 5, descripcion: "Ruleman delantero SNR", precio: 7500, rubro: "rodamiento", img: "../Imagenes/repuestoMuestra.jpg"},
+    {sku: 6, descripcion: "Ruleman trasero SKF", precio: 6950, rubro: "rodamiento", img: "../Imagenes/repuestoMuestra.jpg"},
+    {sku: 7, descripcion: "Bieleta Suran", precio: 2870, rubro: "suspension", img: "../Imagenes/repuestoMuestra.jpg"},
+    {sku: 8, descripcion: "Amortiguador delantero Duster", precio: 15640, rubro: "suspension", img: "../Imagenes/repuestoMuestra.jpg"},
+    {sku: 9, descripcion: "Antena universal", precio: 1500, rubro: "accesorios", img: "../Imagenes/repuestoMuestra.jpg"},
+    {sku: 10, descripcion: "Cables de bujia K7M", precio: 11200, rubro: "encendido", img: "../Imagenes/repuestoMuestra.jpg"}
 ]
+  const encontrado = document.querySelector("#listaProductos");
+function imprimir(repuesto){
+    let codigo = "";
+
+    for (const item of repuesto){
+
+        codigo= `<div class="col-3 producto text-center">
+
+        <img src="${item.img}" alt="Imagen de ${item.descripcion}">
+
+        <p>${item.descripcion}</p>
+
+        <p class="precio">${item.precio}</p>
+
+        <input type="number" id="cantidad2">
+
+        <button type="submit" id="agregar2">Agregar</button>
+
+    </div>
+        
+        
+        `;
+
+      encontrado.innerHTML += codigo;
+
+    }
+}
+
+// imprimir(articulos);
 
 console.log(articulos);
 
-// let validar = parseInt(prompt("Elija que producto quiere agregar al carrito seleccionando el numero correspondiente (sellecionar 0 para salir)\n 1- Bujia \n 2- Manija interior Logan\n 3- Kit cremallera embrague R21 \n 4- Pata caja"));
+const buscador = document.querySelector("#buscador");
 
-const carrito = [];
+const buscar = document.querySelector("#buscar");
 
-// function sumarAlCarrito(x){
-//     return carrito.push(x);
-// }
+const listaBuscada=[{sku: 1, descripcion: "Bujia K4M Megane", precio:910 , rubro: "encendido" , img: "../Imagenes/repuestoMuestra.jpg"}];
 
 
+imprimir(listaBuscada);
 
-
-// while (validar !== 0){
-    
-    
-
-//     let agregarCarrito = articulos.find(el =>{
-//          return el.sku === validar});
- 
-//     console.log(agregarCarrito);
-
-//     const cantidad = prompt("Cuantas unidades quiere comprar del repuesto")
-
-//     const precioTotal = agregarCarrito.precio * cantidad;
-
-//     // console.log(precioTotal);
-
-//     agregarCarrito.precio = precioTotal;
-
-//     // console.log(agregarCarrito.precio);  fui dejando estos log para poder ir viendo si funcionaba todo lo que hacia
-
-//     // console.log(agregarCarrito);
-
-//     sumarAlCarrito(agregarCarrito);
-
-//     console.log(carrito); // en el carrito se va formando el array con los productos y en el precio figura el total segun la cantidad seleccionada por el usuario
-
-
-
-    const cargaDeMonto = document.getElementById('productosEnElCarrito');
-
-//     let sumaDeMonto = "Usted tiene " + agregarCarrito.descripcion + "x " + cantidad + "= " + agregarCarrito.precio*cantidad ;
-
-//     // queria hacerlo de este modo pero me tiraba error, en que me estoy equivocando?
-
-//     // let sumaDeMonto = "Usted tiene $ ${agregarCarrotp.descripcion} $ x $ ${cantidad} $ = $ ${agregarCarrito.precio * cantidad}
-//     // ;
-
-//     cargaDeMonto.append(sumaDeMonto);
-
-    
-
-//     validar = parseInt(prompt("Elija que producto quiere agregar al carrito seleccionando el numero correspondiente (sellecionar 0 para salir)\n 1- Bujia \n 2- Manija interior Logan\n 3- Kit cremallera embrague R21 \n 4- Pata caja"));   
-
-// }
-
-const contador1= document.querySelector("#cantidad1");
-
-const suma1 = document.querySelector("#agregar1");
-
-
-
-suma1.addEventListener("click", ()=>
+buscar.addEventListener("click", () =>
 {
-    cargaDeMonto.append(`Usted tiene ${contador1.value} ${articulos[0].descripcion} = ${articulos[0].precio * contador1.value} `);
+  listaBuscada = articulos.filter( articulos => articulos.descripcion === buscador.value);
+})
 
-   
-});
-
-const contador2= document.querySelector("#cantidad2");
-
-const suma2 = document.querySelector("#agregar2");
-
-
-
-suma2.addEventListener("click", ()=>
-{
-    cargaDeMonto.append(`Usted tiene ${contador2.value} ${articulos[1].descripcion} = ${articulos[1].precio * contador2.value} `);
-
-   
-});
-
-const contador3= document.querySelector("#cantidad3");
-
-const suma3 = document.querySelector("#agregar3");
-
-
-
-suma3.addEventListener("click", ()=>
-{
-    cargaDeMonto.append(`Usted tiene ${contador3.value} ${articulos[2].descripcion} = ${articulos[2].precio * contador3.value} `);
-
-   
-});
-
-const contador4= document.querySelector("#cantidad4");
-
-const suma4 = document.querySelector("#agregar4");
-
-
-
-suma4.addEventListener("click", ()=>
-{
-    cargaDeMonto.append(`Usted tiene ${contador4.value} ${articulos[3].descripcion} = ${articulos[3].precio * contador4.value} `);
-
-   
-});
-
-// Probe haciendo entre luego de la suma en cada append para ver si hacia el salto de linea cuando creaba el codigo html y no me funcionaba, tambien utilice el \n y tampoco hacia el salto de linea. Que es lo que estoy haciendo mal?
+console.log(listaBuscada);
