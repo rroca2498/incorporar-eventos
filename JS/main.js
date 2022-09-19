@@ -240,16 +240,16 @@
 // // Probe haciendo entre luego de la suma en cada append para ver si hacia el salto de linea cuando creaba el codigo html y no me funcionaba, tambien utilice el \n y tampoco hacia el salto de linea. Que es lo que estoy haciendo mal?
 
 const articulos  = [
-    {sku: 1, descripcion: "Bujia K4M Megane", precio:910 , rubro: "encendido" , img: "../Imagenes/repuestoMuestra.jpg"},
-    {sku: 2, descripcion: "Manija interior Logan", precio: 3800, rubro: "accesorios" , img: "../Imagenes/repuestoMuestra.jpg"},
-    {sku: 3, descripcion: "Kit cremallera embrague R21", precio: 1010, rubro:"accesorios" , img: "../Imagenes/repuestoMuestra.jpg"},
-    {sku: 4, descripcion: "Pata caja R19", precio: 4840, rubro: "motor" , img: "../Imagenes/repuestoMuestra.jpg"},
-    {sku: 5, descripcion: "Ruleman delantero SNR", precio: 7500, rubro: "rodamiento", img: "../Imagenes/repuestoMuestra.jpg"},
-    {sku: 6, descripcion: "Ruleman trasero SKF", precio: 6950, rubro: "rodamiento", img: "../Imagenes/repuestoMuestra.jpg"},
-    {sku: 7, descripcion: "Bieleta Suran", precio: 2870, rubro: "suspension", img: "../Imagenes/repuestoMuestra.jpg"},
-    {sku: 8, descripcion: "Amortiguador delantero Duster", precio: 15640, rubro: "suspension", img: "../Imagenes/repuestoMuestra.jpg"},
-    {sku: 9, descripcion: "Antena universal", precio: 1500, rubro: "accesorios", img: "../Imagenes/repuestoMuestra.jpg"},
-    {sku: 10, descripcion: "Cables de bujia K7M", precio: 11200, rubro: "encendido", img: "../Imagenes/repuestoMuestra.jpg"}
+    {sku: 1, descripcion: "bujia K4M Megane", precio:910 , rubro: "encendido" , img: "../Imagenes/repuestoMuestra.jpg"},
+    {sku: 2, descripcion: "manija interior Logan", precio: 3800, rubro: "accesorios" , img: "../Imagenes/repuestoMuestra.jpg"},
+    {sku: 3, descripcion: "kit cremallera embrague R21", precio: 1010, rubro:"accesorios" , img: "../Imagenes/repuestoMuestra.jpg"},
+    {sku: 4, descripcion: "pata caja R19", precio: 4840, rubro: "motor" , img: "../Imagenes/repuestoMuestra.jpg"},
+    {sku: 5, descripcion: "ruleman delantero SNR", precio: 7500, rubro: "rodamiento", img: "../Imagenes/repuestoMuestra.jpg"},
+    {sku: 6, descripcion: "ruleman trasero SKF", precio: 6950, rubro: "rodamiento", img: "../Imagenes/repuestoMuestra.jpg"},
+    {sku: 7, descripcion: "bieleta Suran", precio: 2870, rubro: "suspension", img: "../Imagenes/repuestoMuestra.jpg"},
+    {sku: 8, descripcion: "amortiguador delantero Duster", precio: 15640, rubro: "suspension", img: "../Imagenes/repuestoMuestra.jpg"},
+    {sku: 9, descripcion: "antena universal", precio: 1500, rubro: "accesorios", img: "../Imagenes/repuestoMuestra.jpg"},
+    {sku: 10, descripcion: "cables de bujia K7M", precio: 11200, rubro: "encendido", img: "../Imagenes/repuestoMuestra.jpg"}
 ]
   const encontrado = document.querySelector("#listaProductos");
 function imprimir(repuesto){
@@ -279,6 +279,14 @@ function imprimir(repuesto){
     }
 }
 
+function busqueda(productos,palabra){
+
+  return productos.filter(el =>
+  {
+    return el.descripcion.includes(palabra);
+  });
+}
+
 // imprimir(articulos);
 
 console.log(articulos);
@@ -287,14 +295,24 @@ const buscador = document.querySelector("#buscador");
 
 const buscar = document.querySelector("#buscar");
 
-const listaBuscada=[{sku: 1, descripcion: "Bujia K4M Megane", precio:910 , rubro: "encendido" , img: "../Imagenes/repuestoMuestra.jpg"}];
+const listaBuscada=[{sku: 1, descripcion: "bujia K4M Megane", precio:910 , rubro: "encendido" , img: "../Imagenes/repuestoMuestra.jpg"}];
 
 
 imprimir(listaBuscada);
-
-buscar.addEventListener("click", () =>
-{
-  listaBuscada = articulos.filter( articulos => articulos.descripcion === buscador.value);
-})
-
 console.log(listaBuscada);
+
+// buscar.addEventListener("click", () =>
+// {
+//   listaBuscada = articulos.filter( articulos => articulos.descripcion === buscador.value);   probando el filtrado
+// })
+
+// console.log(listaBuscada);
+
+buscar.addEventListener("click", ()=>
+  {
+    encontrado.innerHTML = "";
+    let nuevaBusqueda = busqueda(articulos,buscador.value.toLowerCase());
+    imprimir(nuevaBusqueda);
+    console.log(nuevaBusqueda);
+  }
+)
