@@ -168,8 +168,6 @@
 
 // //     console.log(carrito); // en el carrito se va formando el array con los productos y en el precio figura el total segun la cantidad seleccionada por el usuario
 
-//     const cargaDeMonto = document.getElementById('productosEnElCarrito');
-
 // //     let sumaDeMonto = "Usted tiene " + agregarCarrito.descripcion + "x " + cantidad + "= " + agregarCarrito.precio*cantidad ;
 
 // //     // queria hacerlo de este modo pero me tiraba error, en que me estoy equivocando?
@@ -194,19 +192,6 @@
 // suma1.addEventListener("click", ()=>
 // {
 //     cargaDeMonto.append(`Usted tiene ${contador1.value} ${articulos[0].descripcion} = ${articulos[0].precio * contador1.value} `);
-
-   
-// });
-
-// const contador2= document.querySelector("#cantidad2");
-
-// const suma2 = document.querySelector("#agregar2");
-
-
-
-// suma2.addEventListener("click", ()=>
-// {
-//     cargaDeMonto.append(`Usted tiene ${contador2.value} ${articulos[1].descripcion} = ${articulos[1].precio * contador2.value} `);
 
    
 // });
@@ -316,3 +301,18 @@ buscar.addEventListener("click", ()=>
     console.log(nuevaBusqueda);
   }
 )
+
+// comienza el codigo del carrito
+
+const contador2= document.querySelector("#cantidad2");
+
+const suma2 = document.querySelector("#agregar2");
+
+const cargaDeMonto = document.querySelector("#productosEnElCarrito");
+
+suma2.addEventListener("click", ()=>
+{
+    cargaDeMonto.append(`Usted tiene ${contador2.value} ${articulos[1].descripcion} = ${articulos[1].precio * contador2.value} `);
+
+   
+});
