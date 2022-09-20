@@ -280,15 +280,31 @@ const buscador = document.querySelector("#buscador");
 
 const buscar = document.querySelector("#buscar");
 
-const listaBuscada=[{sku: 1, descripcion: "bujia K4M Megane", precio:910 , rubro: "encendido" , img: "../Imagenes/repuestoMuestra.jpg"}];
 
+// Gracias al localStorage le digo lo que tiene que escribir
 
-imprimir(listaBuscada);
-console.log(listaBuscada);
+let muestra = "Ingrese un repuesto";
+
+localStorage.setItem("repuesto", muestra);
+
+buscador.value =localStorage.getItem("repuesto");
+
+const listaBuscada =[{sku: 1, descripcion: "bujia K4M Megane", precio:910 , rubro: "encendido" , img: "../Imagenes/repuestoMuestra.jpg"}];
+
+let primeraVista = JSON.stringify(listaBuscada);
+
+localStorage.setItem("primera", primeraVista);
+
+const imprimirJSon = JSON.parse(primeraVista);
+
+imprimir(imprimirJSon);
+
+// imprimir(listaBuscada);
+// console.log(listaBuscada); 
 
 // buscar.addEventListener("click", () =>
 // {
-//   listaBuscada = articulos.filter( articulos => articulos.descripcion === buscador.value);   probando el filtrado
+//   listaBuscada = articulos.filter( articulos => articulos.descripcion === buscador.value);   
 // })
 
 // console.log(listaBuscada);
@@ -312,7 +328,11 @@ const cargaDeMonto = document.querySelector("#productosEnElCarrito");
 
 suma2.addEventListener("click", ()=>
 {
-    cargaDeMonto.append(`Usted tiene ${contador2.value} ${articulos[1].descripcion} = ${articulos[1].precio * contador2.value} `);
+    const item = document.createElement('p'); /// gracias por ayudarme a poder acomodar el texto que agregaba
+
+    item.innerText = `Usted tiene ${contador2.value} ${articulos[1].descripcion} = ${articulos[1].precio * contador2.value} `;
+
+    cargaDeMonto.append(item);
 
    
-});
+}); 
